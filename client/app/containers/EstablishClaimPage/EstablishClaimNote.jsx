@@ -77,6 +77,7 @@ export default class EstablishClaimNote extends BaseForm {
         <div className="cf-app-segment" id="establish-claim-buttons">
           <div className="cf-push-right">
             <Button
+              loading={this.props.loading}
               name="Finish Routing Claim"
               classNames={["usa-button-primary"]}
               disabled={!this.state.noteForm.confirmBox.value}

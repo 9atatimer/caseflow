@@ -7,6 +7,14 @@ const PARSE_INT_RADIX = 10;
 
 export default class EstablishClaimComplete extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false
+    };
+  }
+
   render() {
 
     let {
@@ -19,6 +27,10 @@ export default class EstablishClaimComplete extends React.Component {
       totalCasesToComplete,
       employeeCount
     } = this.props;
+
+    let {
+      loading
+    } = this.state;
 
     let casesAssigned, employeeCountInt,
       noCasesLeft, todayfeedbackText, totalCases;
@@ -70,6 +82,7 @@ export default class EstablishClaimComplete extends React.Component {
       <div className="cf-push-right">
         { availableTasks &&
         <Button
+          loading={loading}
           name={buttonText}
           onClick={this.onClick}
           classNames={["usa-button-primary", "cf-push-right"]}
@@ -89,6 +102,10 @@ export default class EstablishClaimComplete extends React.Component {
   }
 
   onClick = () => {
+    this.setState({
+      loading: true
+    });
+
     ApiUtil.patch(`/dispatch/establish-claim/assign`).then((response) => {
       window.location = `/dispatch/establish-claim/${response.body.next_task_id}`;
     });

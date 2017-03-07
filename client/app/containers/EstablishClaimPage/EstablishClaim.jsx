@@ -646,6 +646,7 @@ export default class EstablishClaim extends BaseForm {
         }
         { this.isNotePage() &&
           <EstablishClaimNote
+            loading={loading}
             appeal={this.props.task.appeal}
             handleSubmit={this.handleNotePageSubmit}
             showNotePageAlert={this.state.showNotePageAlert}
@@ -654,6 +655,7 @@ export default class EstablishClaim extends BaseForm {
         }
         { this.isEmailPage() &&
           <EstablishClaimEmail
+            loading={loading}
             appeal={this.props.task.appeal}
             handleCancelTask={this.handleCancelTask}
             handleEmailSubmit={this.handleEmailPageSubmit}

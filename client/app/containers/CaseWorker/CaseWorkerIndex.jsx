@@ -16,6 +16,14 @@ const COLUMN_CLASSES = ['cf-txt-l ', 'cf-txt-c', 'cf-txt-c', 'cf-txt-c'];
 
 export default class CaseWorkerIndex extends BaseForm {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false
+    };
+  }
+
   buildUserRow = (caseInformation) =>
     [
       `${caseInformation.appeal.veteran_name} (${caseInformation.appeal.vbms_id})`,
@@ -25,6 +33,10 @@ export default class CaseWorkerIndex extends BaseForm {
     ]
 
   onClick = () => {
+    this.setState({
+      loading: true
+    });
+
     ApiUtil.patch(`/dispatch/establish-claim/assign`).then((response) => {
       window.location = `/dispatch/establish-claim/${response.body.next_task_id}`;
     }, () => {
@@ -42,6 +54,10 @@ export default class CaseWorkerIndex extends BaseForm {
       buttonText
     } = this.props;
 
+    let {
+      loading
+    } = this.state;
+
     return <div className="cf-app-segment cf-app-segment--alt">
           <div className="usa-width-one-whole task-start-wrapper">
             <div className="cf-right-side">
@@ -56,6 +72,7 @@ export default class CaseWorkerIndex extends BaseForm {
               </span>
               { availableTasks &&
               <Button
+                loading={loading}
                 name={buttonText}
                 onClick={this.onClick}
                 classNames={["usa-button-primary", "cf-push-right",

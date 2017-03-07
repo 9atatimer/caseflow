@@ -88,15 +88,16 @@ export default class EstablishClaimEmail extends BaseForm {
         <div className="cf-app-segment" id="establish-claim-buttons">
           <div className="cf-push-right">
             <Button
-            name="Cancel"
-            onClick={this.props.handleCancelTask}
-            classNames={["cf-btn-link", "cf-adjacent-buttons"]}
+              name="Cancel"
+              onClick={this.props.handleCancelTask}
+              classNames={["cf-btn-link", "cf-adjacent-buttons"]}
             />
             <Button
-            name="Finish Routing Claim"
-            classNames={["usa-button-primary"]}
-            disabled={!this.state.emailForm.confirmBox.value}
-            onClick={this.props.handleEmailSubmit}
+              loading={this.props.loading}
+              name="Finish Routing Claim"
+              classNames={["usa-button-primary"]}
+              disabled={!this.state.emailForm.confirmBox.value}
+              onClick={this.props.handleEmailSubmit}
             />
           </div>
         </div>
@@ -134,6 +135,7 @@ export default class EstablishClaimEmail extends BaseForm {
                   classNames={["cf-btn-link", "cf-adjacent-buttons"]}
               />
               <Button
+                  loading={this.props.loading}
                   name="Release Claim"
                   classNames={["usa-button-secondary"]}
                   disabled={!this.state.emailForm.confirmBox.value}

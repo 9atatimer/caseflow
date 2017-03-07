@@ -93,13 +93,23 @@
 
 .cf-loading-button-text {
   display: inline-block;
-  margin-right: 10px;
   line-height: 0;
   position: relative;
+  font-weight: bold;
 }
 
 .cf-loading-button-symbol {
   display: inline-block;
+  padding: 3px;
+
+  // spin more quickly on buttons
+  .cf-react-icon-loading-front {
+    @include animation(backwardspin 5s linear infinite);
+  }
+
+  .cf-react-icon-loading-back {
+    @include animation(spin 5s linear infinite);
+  }
 }
 
 .cf-button-aligned-with-textfield {
@@ -189,12 +199,12 @@ select {
 
 .cf-react-icon-loading-back {
   @include animation(spin 9s linear infinite);
-  margin-left: -30px;
+  margin-left: -20px;
 }
 
 .cf-react-loading-indicator {
-  background-color: $color-white;
-  border-radius: 5px;
+  background-color: $color-gray-light;
+  border-radius: .3rem;
   padding: 0.4rem 2.7em;
   text-align: center;
   display: inline-block;
