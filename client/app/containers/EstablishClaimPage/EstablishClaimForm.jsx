@@ -12,15 +12,29 @@ export const MODIFIER_OPTIONS = [
 ];
 
 export default class EstablishClaimForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false
+    };
+  }
+
+  handleSubmit = () => {
+    this.setState({
+      loading: true
+    });
+
+    this.props.handleSubmit();
+  }
+
   render() {
     let {
       claimLabelValue,
       claimForm,
       handleCancelTask,
       handleFieldChange,
-      handleSubmit,
       handleBackToDecisionReview,
-      loading,
       validModifiers
     } = this.props;
 
@@ -98,8 +112,8 @@ export default class EstablishClaimForm extends React.Component {
           />
           <Button
             name="Create End Product"
-            loading={loading}
-            onClick={handleSubmit}
+            loading={this.state.loading}
+            onClick={this.handleSubmit}
           />
         </div>
       </div>

@@ -15,7 +15,6 @@ const TABLE_HEADERS = [
 const COLUMN_CLASSES = ['cf-txt-l ', 'cf-txt-c', 'cf-txt-c', 'cf-txt-c'];
 
 export default class CaseWorkerIndex extends BaseForm {
-
   constructor(props) {
     super(props);
 
@@ -72,12 +71,12 @@ export default class CaseWorkerIndex extends BaseForm {
               </span>
               { availableTasks &&
               <Button
-                loading={loading}
                 name={buttonText}
                 onClick={this.onClick}
                 classNames={["usa-button-primary", "cf-push-right",
                   "cf-button-aligned-with-textfield-right"]}
                 disabled={!availableTasks}
+                loading={loading}
               />
               }
               { !availableTasks &&

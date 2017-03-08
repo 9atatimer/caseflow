@@ -41,8 +41,25 @@ export default class EstablishClaimEmail extends BaseForm {
         confirmBox: new FormField(false),
         emailField: new FormField(email)
       },
+      loading: false,
       noEmailNote: note
     };
+  }
+
+  handleEmailSubmit = () => {
+    this.setState({
+      loading: true
+    });
+
+    this.props.handleEmailSubmit();
+  }
+
+  handleNoEmailSubmit = () => {
+    this.setState({
+      loading: true
+    });
+
+    this.props.handleNoEmailSubmit();
   }
 
   render() {
@@ -93,11 +110,11 @@ export default class EstablishClaimEmail extends BaseForm {
               classNames={["cf-btn-link", "cf-adjacent-buttons"]}
             />
             <Button
-              loading={this.props.loading}
               name="Finish Routing Claim"
               classNames={["usa-button-primary"]}
               disabled={!this.state.emailForm.confirmBox.value}
-              onClick={this.props.handleEmailSubmit}
+              onClick={this.handleEmailSubmit}
+              loading={this.state.loading}
             />
           </div>
         </div>
@@ -135,11 +152,11 @@ export default class EstablishClaimEmail extends BaseForm {
                   classNames={["cf-btn-link", "cf-adjacent-buttons"]}
               />
               <Button
-                  loading={this.props.loading}
                   name="Release Claim"
                   classNames={["usa-button-secondary"]}
                   disabled={!this.state.emailForm.confirmBox.value}
-                  onClick={this.props.handleNoEmailSubmit}
+                  onClick={this.handleNoEmailSubmit}
+                  loading={this.state.loading}
               />
             </div>
           </div>

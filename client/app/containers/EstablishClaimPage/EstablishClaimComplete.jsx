@@ -6,7 +6,6 @@ import Button from '../../components/Button';
 const PARSE_INT_RADIX = 10;
 
 export default class EstablishClaimComplete extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -27,10 +26,6 @@ export default class EstablishClaimComplete extends React.Component {
       totalCasesToComplete,
       employeeCount
     } = this.props;
-
-    let {
-      loading
-    } = this.state;
 
     let casesAssigned, employeeCountInt,
       noCasesLeft, todayfeedbackText, totalCases;
@@ -82,11 +77,11 @@ export default class EstablishClaimComplete extends React.Component {
       <div className="cf-push-right">
         { availableTasks &&
         <Button
-          loading={loading}
           name={buttonText}
           onClick={this.onClick}
           classNames={["usa-button-primary", "cf-push-right"]}
           disabled={!availableTasks}
+          loading={this.state.loading}
         />
         }
         { !availableTasks &&

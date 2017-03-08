@@ -33,11 +33,20 @@ export default class EstablishClaimNote extends BaseForm {
       ` in your jurisdiction. Please proceed with control and implement this grant.`;
 
     this.state = {
+      loading: false,
       noteForm: {
         confirmBox: new FormField(false),
         noteField: new FormField(note)
       }
     };
+  }
+
+  handleSubmit = () => {
+    this.setState({
+      loading: true
+    });
+
+    this.props.handleSubmit();
   }
 
   render() {
@@ -77,11 +86,11 @@ export default class EstablishClaimNote extends BaseForm {
         <div className="cf-app-segment" id="establish-claim-buttons">
           <div className="cf-push-right">
             <Button
-              loading={this.props.loading}
               name="Finish Routing Claim"
               classNames={["usa-button-primary"]}
               disabled={!this.state.noteForm.confirmBox.value}
-              onClick={this.props.handleSubmit}
+              onClick={this.handleSubmit}
+              loading={this.state.loading}
             />
           </div>
         </div>

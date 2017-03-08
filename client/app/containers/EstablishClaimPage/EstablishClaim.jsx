@@ -586,7 +586,6 @@ export default class EstablishClaim extends BaseForm {
 
   render() {
     let {
-      loading,
       cancelModalDisplay,
       history,
       modalSubmitLoading,
@@ -640,13 +639,11 @@ export default class EstablishClaim extends BaseForm {
             handleSubmit={this.handleFormPageSubmit}
             handleFieldChange={this.handleFieldChange}
             handleBackToDecisionReview={this.handleBackToDecisionReview}
-            loading={loading}
             validModifiers={this.validModifiers()}
           />
         }
         { this.isNotePage() &&
           <EstablishClaimNote
-            loading={loading}
             appeal={this.props.task.appeal}
             handleSubmit={this.handleNotePageSubmit}
             showNotePageAlert={this.state.showNotePageAlert}
@@ -655,7 +652,6 @@ export default class EstablishClaim extends BaseForm {
         }
         { this.isEmailPage() &&
           <EstablishClaimEmail
-            loading={loading}
             appeal={this.props.task.appeal}
             handleCancelTask={this.handleCancelTask}
             handleEmailSubmit={this.handleEmailPageSubmit}
