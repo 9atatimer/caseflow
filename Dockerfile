@@ -7,9 +7,9 @@ RUN cd /opt/oracle && unzip -q \*.zip
 RUN cd /opt/oracle/instantclient_12_1 && ln -s libclntsh.so.12.1 libclntsh.so
 ENV LD_LIBRARY_PATH /opt/oracle/instantclient_12_1
 
-RUN mkdir /myapp
-WORKDIR /myapp
-ADD Gemfile /myapp/Gemfile
-ADD Gemfile.lock /myapp/Gemfile.lock
+RUN mkdir /caseflow
+WORKDIR /caseflow
+ADD Gemfile /caseflow/Gemfile
+ADD Gemfile.lock /caseflow/Gemfile.lock
 RUN bundle install
-ADD . /myapp
+ADD . /caseflow

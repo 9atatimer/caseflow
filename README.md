@@ -222,3 +222,8 @@ FeatureToggle.details_for(:apple)
 => { :regional_offices =>["RO08"] }
 ```
 
+* Docker commands
+
+To run specs in a Dockerized image:
+
+docker run demo /caseflow/bin/bundle exec rake
